@@ -21,6 +21,8 @@
 		02284914286C796E001CEE85 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0228490A286C796E001CEE85 /* APIService.swift */; };
 		02284915286C796E001CEE85 /* PostDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0228490B286C796E001CEE85 /* PostDetail.swift */; };
 		02284916286C796E001CEE85 /* Crypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0228490C286C796E001CEE85 /* Crypto.swift */; };
+		02284919286C7D6D001CEE85 /* Clibsodium in Frameworks */ = {isa = PBXBuildFile; productRef = 02284918286C7D6D001CEE85 /* Clibsodium */; };
+		0228491B286C7D6D001CEE85 /* Sodium in Frameworks */ = {isa = PBXBuildFile; productRef = 0228491A286C7D6D001CEE85 /* Sodium */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +49,8 @@
 			files = (
 				02284902286C78D6001CEE85 /* RxMoya in Frameworks */,
 				02284900286C78D6001CEE85 /* Moya in Frameworks */,
+				02284919286C7D6D001CEE85 /* Clibsodium in Frameworks */,
+				0228491B286C7D6D001CEE85 /* Sodium in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -116,6 +120,8 @@
 			packageProductDependencies = (
 				022848FF286C78D6001CEE85 /* Moya */,
 				02284901286C78D6001CEE85 /* RxMoya */,
+				02284918286C7D6D001CEE85 /* Clibsodium */,
+				0228491A286C7D6D001CEE85 /* Sodium */,
 			);
 			productName = shortdiary;
 			productReference = 021C2A02286C759B0098BE52 /* shortdiary.app */;
@@ -147,6 +153,7 @@
 			mainGroup = 021C29F9286C759B0098BE52;
 			packageReferences = (
 				022848FE286C78D6001CEE85 /* XCRemoteSwiftPackageReference "Moya" */,
+				02284917286C7D6D001CEE85 /* XCRemoteSwiftPackageReference "swift-sodium" */,
 			);
 			productRefGroup = 021C2A03286C759B0098BE52 /* Products */;
 			projectDirPath = "";
@@ -397,6 +404,14 @@
 				minimumVersion = 15.0.0;
 			};
 		};
+		02284917286C7D6D001CEE85 /* XCRemoteSwiftPackageReference "swift-sodium" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/jedisct1/swift-sodium.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.9.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -409,6 +424,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 022848FE286C78D6001CEE85 /* XCRemoteSwiftPackageReference "Moya" */;
 			productName = RxMoya;
+		};
+		02284918286C7D6D001CEE85 /* Clibsodium */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 02284917286C7D6D001CEE85 /* XCRemoteSwiftPackageReference "swift-sodium" */;
+			productName = Clibsodium;
+		};
+		0228491A286C7D6D001CEE85 /* Sodium */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 02284917286C7D6D001CEE85 /* XCRemoteSwiftPackageReference "swift-sodium" */;
+			productName = Sodium;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

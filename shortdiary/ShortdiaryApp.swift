@@ -15,7 +15,7 @@ struct ShortdiaryApp: App {
             case .success(let auth):
                 authStore.auth = auth
                 
-                if auth.jwt != nil {
+                if auth.jwt != nil && auth.masterKey != nil {
                     isLoggedIn = true
                 }
             }
@@ -29,7 +29,7 @@ struct ShortdiaryApp: App {
                 do {
                     let response = try moyaResponse.filterSuccessfulStatusCodes()
                     let data = try response.map([EncryptedPost].self)
-                    postData.posts = decryptPosts(encryptedPosts: data)
+                    postData.loadPosts(encryptedPosts: data)
                 } catch let err {
                     print("riperoni", err)
                 }

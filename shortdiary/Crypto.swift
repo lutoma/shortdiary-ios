@@ -1,33 +1,33 @@
 import Foundation
-//import Sodium
+import Sodium
+import Clibsodium
 
-let decoder = JSONDecoder()
-//let sodium = Sodium()
+private let sodium = Sodium()
 
-func decryptPost(rawPost: EncryptedPost) -> Post {
-    if rawPost.format_version != 0 {
-        return Post(text: "Unsupported format version")
-    }
-    
-    var bodyData : EncryptedPostBody
-    do {
-        let rawData = rawPost.data.data(using: .utf8)!
-        bodyData = try decoder.decode(EncryptedPostBody.self, from: rawData)
-    } catch let error {
-        print(error)
-        return Post(text: "Decryption failed: \(error.localizedDescription)")
-    }
-    
-    let location_lat = Double(bodyData.location_lat ?? "")
-    let location_lon = Double(bodyData.location_lon ?? "")
-    
-    //return Post(date: rawPost.date, text: bodyData.text, location_verbose: bodyData.location_verbose, location_lat: location_lat, location_lon: location_lon, mood: bodyData.mood, tags: bodyData.tags)
-    return Post(text: bodyData.text, location_verbose: bodyData.location_verbose, location_lat: location_lat, location_lon: location_lon, mood: bodyData.mood, tags: bodyData.tags)
+enum CryptoError: Error {
+    case runtimeError(String)
 }
 
-func decryptPosts(encryptedPosts: [EncryptedPost]) -> [Post] {
-    let posts : [Post] = encryptedPosts.map {
-        decryptPost(rawPost: $0)
+private func deriveKey(password: String, b64Salt: String) -> Bytes? {
+    if let salt = sodium.utils.base642bin(b64Salt + "==") {
+        return sodium.pwHash.hash(outputLength: Int(crypto_secretbox_keybytes()), passwd: password.bytes, salt: salt, opsLimit: 10, memLimit: 30 * 1024 * 1024)
     }
-    return posts
+    return nil
+}
+
+func decrypt(key: Bytes, b64Nonce: String, b64CryptData: String) -> Bytes? {
+    print("decrypting", key, b64Nonce, b64CryptData)
+    if let nonce = sodium.utils.base642bin(b64Nonce + "=="), let cryptData = sodium.utils.base642bin(b64CryptData + "==") {
+        print("crypt have b64")
+        return sodium.secretBox.open(authenticatedCipherText: cryptData, secretKey: key, nonce: nonce)
+    }
+    print("decrypt could not get b64")
+    return nil
+}
+
+func cryptoUnlock(password: String, salt: String, masterNonce: String, encryptedMaster: String) -> Bytes? {
+    if let ephemeralKey = deriveKey(password: password, b64Salt: salt) {
+        return decrypt(key: ephemeralKey, b64Nonce: masterNonce, b64CryptData: encryptedMaster)
+    }
+    return nil
 }

@@ -11,13 +11,23 @@ struct LoginView: View {
                     APIToken = data.access_token
                     authStore.auth.jwt = data.access_token
                     
+                    let user = data.user
+                    
+                    print("Logged in, user data: ", user)
+                    if let masterKey = cryptoUnlock(password: self.password, salt: user.ephemeral_key_salt, masterNonce: user.master_key_nonce, encryptedMaster: user.master_key) {
+                        
+                        authStore.auth.masterKey = masterKey
+                        print("Have unlocked master key!")
+                        self.isLoggedIn = true
+                    } else {
+                        print("Decryption of master key failed")
+                    }
+                    
                     AuthStore.save(authData: authStore.auth) { result in
                         if case .failure(let error) = result {
                             fatalError(error.localizedDescription)
                         }
                     }
-                    
-                    self.isLoggedIn = true
                 } catch let err {
                     print("riperoni", err)
                 }

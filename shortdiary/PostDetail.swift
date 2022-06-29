@@ -2,7 +2,7 @@ import SwiftUI
 import MapKit
 
 struct PostDetail: View {
-    @Binding var post: Post
+    //@Binding var post: Post
     
     @EnvironmentObject var postData: PostData
     @Environment(\.dismiss) private var dismiss
@@ -11,6 +11,8 @@ struct PostDetail: View {
         center: CLLocationCoordinate2D(latitude: 34.011_286, longitude: -116.166_868),
         span: MKCoordinateSpan(latitudeDelta: 0.2, longitudeDelta: 9.2)
     )
+    
+    var post: Post = Post()
     
     var body: some View {
         /*if (post.location_lat != nil && post.location_lon != nil) {

@@ -7,28 +7,23 @@ struct PostsList: View {
     
     var body: some View {
         List {
-            Section(content: {
-                ForEach(postData.sortedPosts()) { $post in
-                    NavigationLink {
-                        PostDetail(post: $post)
-                    } label: {
-                        Text(post.date.formatted(date: .abbreviated, time: .omitted))
+            ForEach(postData.postsByYear) { group in
+                Section(content: {
+                    ForEach(group.posts) { post in
+                        NavigationLink {
+                            PostDetail(post: post)
+                        } label: {
+                            Text(post.date.formatted(date: .abbreviated, time: .omitted))
+                        }
                     }
-                }
-            }, header: {
-                Text("2022")
-                    .font(.callout)
-                    .foregroundColor(.secondary)
-                    .fontWeight(.bold)
-            })
-            
-            Section(content: {
-            }, header: {
-                Text("2021")
-                    .font(.callout)
-                    .foregroundColor(.secondary)
-                    .fontWeight(.bold)
-            })
+                }, header: {
+                    Text(String(group.year))
+                        .font(.callout)
+                        .foregroundColor(.secondary)
+                        .fontWeight(.bold)
+                })
+            }
+
         }
         .listStyle(.sidebar)
         .navigationTitle("Entries")

@@ -3,6 +3,7 @@ import SwiftUI
 
 struct AuthData: Codable {
     var jwt: String?
+    var masterKey: [UInt8]?
 }
 
 class AuthStore: ObservableObject {
