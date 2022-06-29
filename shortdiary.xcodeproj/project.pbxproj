@@ -1,0 +1,416 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		021C2A06286C759B0098BE52 /* shortdiaryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021C2A05286C759B0098BE52 /* shortdiaryApp.swift */; };
+		021C2A0A286C759B0098BE52 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 021C2A09286C759B0098BE52 /* Assets.xcassets */; };
+		021C2A0E286C759B0098BE52 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 021C2A0D286C759B0098BE52 /* Preview Assets.xcassets */; };
+		02284900286C78D6001CEE85 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 022848FF286C78D6001CEE85 /* Moya */; };
+		02284902286C78D6001CEE85 /* RxMoya in Frameworks */ = {isa = PBXBuildFile; productRef = 02284901286C78D6001CEE85 /* RxMoya */; };
+		0228490D286C796E001CEE85 /* PostsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02284903286C796E001CEE85 /* PostsList.swift */; };
+		0228490E286C796E001CEE85 /* PostRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02284904286C796E001CEE85 /* PostRow.swift */; };
+		0228490F286C796E001CEE85 /* PostStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02284905286C796E001CEE85 /* PostStore.swift */; };
+		02284911286C796E001CEE85 /* AuthStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02284907286C796E001CEE85 /* AuthStore.swift */; };
+		02284912286C796E001CEE85 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02284908286C796E001CEE85 /* Models.swift */; };
+		02284913286C796E001CEE85 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02284909286C796E001CEE85 /* LoginView.swift */; };
+		02284914286C796E001CEE85 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0228490A286C796E001CEE85 /* APIService.swift */; };
+		02284915286C796E001CEE85 /* PostDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0228490B286C796E001CEE85 /* PostDetail.swift */; };
+		02284916286C796E001CEE85 /* Crypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0228490C286C796E001CEE85 /* Crypto.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		021C2A02286C759B0098BE52 /* shortdiary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = shortdiary.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		021C2A05286C759B0098BE52 /* shortdiaryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = shortdiaryApp.swift; sourceTree = "<group>"; };
+		021C2A09286C759B0098BE52 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		021C2A0B286C759B0098BE52 /* shortdiary.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = shortdiary.entitlements; sourceTree = "<group>"; };
+		021C2A0D286C759B0098BE52 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		02284903286C796E001CEE85 /* PostsList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostsList.swift; sourceTree = "<group>"; };
+		02284904286C796E001CEE85 /* PostRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostRow.swift; sourceTree = "<group>"; };
+		02284905286C796E001CEE85 /* PostStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostStore.swift; sourceTree = "<group>"; };
+		02284907286C796E001CEE85 /* AuthStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthStore.swift; sourceTree = "<group>"; };
+		02284908286C796E001CEE85 /* Models.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		02284909286C796E001CEE85 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		0228490A286C796E001CEE85 /* APIService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		0228490B286C796E001CEE85 /* PostDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostDetail.swift; sourceTree = "<group>"; };
+		0228490C286C796E001CEE85 /* Crypto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Crypto.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		021C29FF286C759B0098BE52 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				02284902286C78D6001CEE85 /* RxMoya in Frameworks */,
+				02284900286C78D6001CEE85 /* Moya in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		021C29F9286C759B0098BE52 = {
+			isa = PBXGroup;
+			children = (
+				021C2A04286C759B0098BE52 /* shortdiary */,
+				021C2A03286C759B0098BE52 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		021C2A03286C759B0098BE52 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				021C2A02286C759B0098BE52 /* shortdiary.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		021C2A04286C759B0098BE52 /* shortdiary */ = {
+			isa = PBXGroup;
+			children = (
+				0228490A286C796E001CEE85 /* APIService.swift */,
+				02284907286C796E001CEE85 /* AuthStore.swift */,
+				0228490C286C796E001CEE85 /* Crypto.swift */,
+				02284909286C796E001CEE85 /* LoginView.swift */,
+				02284908286C796E001CEE85 /* Models.swift */,
+				0228490B286C796E001CEE85 /* PostDetail.swift */,
+				02284904286C796E001CEE85 /* PostRow.swift */,
+				02284903286C796E001CEE85 /* PostsList.swift */,
+				02284905286C796E001CEE85 /* PostStore.swift */,
+				021C2A05286C759B0098BE52 /* shortdiaryApp.swift */,
+				021C2A09286C759B0098BE52 /* Assets.xcassets */,
+				021C2A0B286C759B0098BE52 /* shortdiary.entitlements */,
+				021C2A0C286C759B0098BE52 /* Preview Content */,
+			);
+			path = shortdiary;
+			sourceTree = "<group>";
+		};
+		021C2A0C286C759B0098BE52 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				021C2A0D286C759B0098BE52 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		021C2A01286C759B0098BE52 /* shortdiary */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 021C2A11286C759B0098BE52 /* Build configuration list for PBXNativeTarget "shortdiary" */;
+			buildPhases = (
+				021C29FE286C759B0098BE52 /* Sources */,
+				021C29FF286C759B0098BE52 /* Frameworks */,
+				021C2A00286C759B0098BE52 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = shortdiary;
+			packageProductDependencies = (
+				022848FF286C78D6001CEE85 /* Moya */,
+				02284901286C78D6001CEE85 /* RxMoya */,
+			);
+			productName = shortdiary;
+			productReference = 021C2A02286C759B0098BE52 /* shortdiary.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		021C29FA286C759B0098BE52 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1400;
+				LastUpgradeCheck = 1400;
+				TargetAttributes = {
+					021C2A01286C759B0098BE52 = {
+						CreatedOnToolsVersion = 14.0;
+					};
+				};
+			};
+			buildConfigurationList = 021C29FD286C759B0098BE52 /* Build configuration list for PBXProject "shortdiary" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 021C29F9286C759B0098BE52;
+			packageReferences = (
+				022848FE286C78D6001CEE85 /* XCRemoteSwiftPackageReference "Moya" */,
+			);
+			productRefGroup = 021C2A03286C759B0098BE52 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				021C2A01286C759B0098BE52 /* shortdiary */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		021C2A00286C759B0098BE52 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				021C2A0E286C759B0098BE52 /* Preview Assets.xcassets in Resources */,
+				021C2A0A286C759B0098BE52 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		021C29FE286C759B0098BE52 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				021C2A06286C759B0098BE52 /* shortdiaryApp.swift in Sources */,
+				02284911286C796E001CEE85 /* AuthStore.swift in Sources */,
+				0228490F286C796E001CEE85 /* PostStore.swift in Sources */,
+				0228490E286C796E001CEE85 /* PostRow.swift in Sources */,
+				0228490D286C796E001CEE85 /* PostsList.swift in Sources */,
+				02284913286C796E001CEE85 /* LoginView.swift in Sources */,
+				02284914286C796E001CEE85 /* APIService.swift in Sources */,
+				02284916286C796E001CEE85 /* Crypto.swift in Sources */,
+				02284915286C796E001CEE85 /* PostDetail.swift in Sources */,
+				02284912286C796E001CEE85 /* Models.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		021C2A0F286C759B0098BE52 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		021C2A10286C759B0098BE52 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		021C2A12286C759B0098BE52 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = shortdiary/shortdiary.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"shortdiary/Preview Content\"";
+				DEVELOPMENT_TEAM = 4JZ2C2LS6X;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Shortdiary;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 12.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = eu.fnoco.shortdiary;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		021C2A13286C759B0098BE52 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = shortdiary/shortdiary.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"shortdiary/Preview Content\"";
+				DEVELOPMENT_TEAM = 4JZ2C2LS6X;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Shortdiary;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 12.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = eu.fnoco.shortdiary;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		021C29FD286C759B0098BE52 /* Build configuration list for PBXProject "shortdiary" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				021C2A0F286C759B0098BE52 /* Debug */,
+				021C2A10286C759B0098BE52 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		021C2A11286C759B0098BE52 /* Build configuration list for PBXNativeTarget "shortdiary" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				021C2A12286C759B0098BE52 /* Debug */,
+				021C2A13286C759B0098BE52 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		022848FE286C78D6001CEE85 /* XCRemoteSwiftPackageReference "Moya" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Moya/Moya.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 15.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		022848FF286C78D6001CEE85 /* Moya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 022848FE286C78D6001CEE85 /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = Moya;
+		};
+		02284901286C78D6001CEE85 /* RxMoya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 022848FE286C78D6001CEE85 /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = RxMoya;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 021C29FA286C759B0098BE52 /* Project object */;
+}
