@@ -4,9 +4,9 @@ private let calendar = Calendar.current
 private let dateFormatter = DateFormatter()
 private let decoder = JSONDecoder()
 
-struct PostYearGroup: Hashable, Identifiable {
-    var id: Int { year }
-    let year: Int
+struct TimelinePostGroup: Hashable, Identifiable {
+    var id: Date { date }
+    var date: Date
     let posts: [Post]
 }
 
@@ -42,7 +42,7 @@ private func loadPost(rawPost: EncryptedPost) -> Post {
 
 class PostStore: ObservableObject {
     @Published var posts: [Post] = []
-    @Published var postsByYear: [PostYearGroup] = []
+    @Published var groupedPosts: [TimelinePostGroup] = []
 
     func load() async {
         api.request(.showPosts) { result in
@@ -59,13 +59,15 @@ class PostStore: ObservableObject {
                         loadPost(rawPost: $0)
                     }
                     
-                    let grouped = Dictionary(grouping: self.posts, by: { post in
-                        return calendar.dateComponents([.year], from: post.date).year!
+                    let utc = TimeZone(abbreviation: "UTC")!
+                    self.groupedPosts = Dictionary(grouping: self.posts, by: { post in
+                        // This is stupid, but .dateComponents does not seem to allow immediately specifying the components
+                        // while also specifying a time zone, only one or the other...
+                        let dc = calendar.dateComponents(in: utc, from: post.date)
+                        return DateComponents(timeZone: utc, year: dc.year!, month: dc.month!)
                     })
-                    
-                    self.postsByYear = grouped.map({ di -> PostYearGroup in
-                        return PostYearGroup(year: di.0, posts: di.1)
-                    }).sorted(by: { $0.year > $1.year })
+                    .map({ TimelinePostGroup(date: calendar.date(from: $0.0)!, posts: $0.1) })
+                    .sorted(by: { $0.date > $1.date })
                 } catch let err {
                     print("riperoni", err)
                 }

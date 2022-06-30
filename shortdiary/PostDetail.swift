@@ -7,11 +7,6 @@ struct PostDetail: View {
     @EnvironmentObject var postStore: PostStore
     @Environment(\.dismiss) private var dismiss
     
-    @State private var mapRegion = MKCoordinateRegion(
-        center: CLLocationCoordinate2D(latitude: 34.011_286, longitude: -116.166_868),
-        span: MKCoordinateSpan(latitudeDelta: 0.2, longitudeDelta: 9.2)
-    )
-    
     var post: Post = Post()
     
     var body: some View {
@@ -20,35 +15,27 @@ struct PostDetail: View {
             $mapRegion.center.longitude = post.location_lon
         }*/
         ScrollView {
-            Map(coordinateRegion: $mapRegion)
-                .frame(width: 300, height: 300)
-            
-            VStack(alignment: .leading) {
-                Text(post.date.formatted(date: .abbreviated, time: .omitted))
-                    .font(.title)
-                
+            HStack {
+                Label("\(post.mood)", systemImage: "face.smiling")
                 if post.location_verbose != nil && post.location_verbose != "" {
-                    Text(post.location_verbose!)
-                }
-                
-                HStack {
-                    Text("Mood: \(post.mood)")
-                        .font(.subheadline)
-                    
-                    ForEach(post.tags, id: \.self) { tag in
-                        Text(tag)
-                            .padding(4)
-                            .font(.subheadline)
-                            .background(Color.orange)
-                            .clipShape(Capsule())
-                    }
+                    Label(post.location_verbose!, systemImage: "map")
                 }
             }
-            //.offset(y: -80)
+            
+            ForEach(post.tags, id: \.self) { tag in
+                Text(tag)
+                    .padding([.top, .bottom], 3)
+                    .padding([.leading, .trailing], 8)
+                    .font(.subheadline)
+                    .background(Color.orange)
+                    .clipShape(Capsule())
+            }
             
             Text(post.text)
                 .padding()
         }
-        //.offset(y: -130)
+        .navigationTitle(post.date.formatted(date: .abbreviated, time: .omitted))
+        .padding([.top], 20)
+        //.ignoresSafeArea()
     }
 }

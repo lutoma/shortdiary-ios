@@ -46,6 +46,12 @@ struct ShortdiaryApp: App {
                         Label("Stats", systemImage: "chart.bar.xaxis")
                     }
                     .tag(2)
+                    
+                    LocationsView()
+                    .tabItem {
+                        Label("Locations", systemImage: "map")
+                    }
+                    .tag(3)
                 }
             }
         }

@@ -8,7 +8,7 @@ struct PostsList: View {
     
     var body: some View {
         List {
-            ForEach(postStore.postsByYear) { group in
+            ForEach(postStore.groupedPosts) { group in
                 Section(content: {
                     ForEach(group.posts) { post in
                         NavigationLink {
@@ -18,7 +18,7 @@ struct PostsList: View {
                         }
                     }
                 }, header: {
-                    Text(String(group.year))
+                    Text(group.date.formatted(date: .abbreviated, time: .omitted))
                         .font(.callout)
                         .foregroundColor(.secondary)
                         .fontWeight(.bold)
@@ -27,15 +27,27 @@ struct PostsList: View {
             }
 
         }
-        .listStyle(.sidebar)
-        .navigationTitle("Entries")
+        .listStyle(.plain)
+        //.navigationTitle("Entries")
         .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button {
+                    print("user")
+                } label: {
+                    Image(systemName: "person.circle")
+                }
+            }
+                
+            ToolbarItem(placement: .principal) {
+                Text("Entries")
+            }
+                
             ToolbarItem {
                 Button {
                     newPost = Post()
                     isAddingNewPost = true
                 } label: {
-                    Image(systemName: "plus")
+                    Image(systemName: "square.and.pencil")
                 }
             }
         }
