@@ -4,7 +4,7 @@ import MapKit
 struct PostDetail: View {
     //@Binding var post: Post
     
-    @EnvironmentObject var postData: PostData
+    @EnvironmentObject var postStore: PostStore
     @Environment(\.dismiss) private var dismiss
     
     @State private var mapRegion = MKCoordinateRegion(

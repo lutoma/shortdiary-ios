@@ -5,7 +5,7 @@ let authStore = AuthStore()
 
 @main
 struct ShortdiaryApp: App {
-    @StateObject private var postData = PostData()
+    @StateObject private var postStore = PostStore()
     
     func loadAuth() {
         AuthStore.load { result in
@@ -22,23 +22,6 @@ struct ShortdiaryApp: App {
         }
     }
     
-    func loadData() {
-        api.request(.showPosts) { result in
-            switch result {
-                case let .success(moyaResponse):
-                do {
-                    let response = try moyaResponse.filterSuccessfulStatusCodes()
-                    let data = try response.map([EncryptedPost].self)
-                    postData.loadPosts(encryptedPosts: data)
-                } catch let err {
-                    print("riperoni", err)
-                }
-                case let .failure(error):
-                print("api request failure", error)
-            }
-        }
-    }
-    
     @State var isLoggedIn: Bool = false
     var body: some Scene {
         WindowGroup {
@@ -51,8 +34,7 @@ struct ShortdiaryApp: App {
                     Text("Select a Post")
                         .foregroundStyle(.secondary)
                 }
-                .environmentObject(postData)
-                .onAppear(perform: loadData)
+                .environmentObject(postStore)
             }
         }
     }

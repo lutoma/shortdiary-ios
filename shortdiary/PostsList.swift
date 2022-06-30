@@ -1,13 +1,13 @@
 import SwiftUI
 
 struct PostsList: View {
-    @EnvironmentObject var postData: PostData
+    @EnvironmentObject var postStore: PostStore
     @State private var isAddingNewPost = false
     @State private var newPost = Post()
     
     var body: some View {
         List {
-            ForEach(postData.postsByYear) { group in
+            ForEach(postStore.postsByYear) { group in
                 Section(content: {
                     ForEach(group.posts) { post in
                         NavigationLink {
@@ -41,6 +41,12 @@ struct PostsList: View {
             NavigationView {
                 //PostEditor(post: $newPost, isNew: true)
             }
+        }
+        .refreshable {
+            await postStore.load()
+        }
+        .task {
+            await postStore.load()
         }
     }
 }
