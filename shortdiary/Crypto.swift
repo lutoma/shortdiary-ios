@@ -17,7 +17,7 @@ private func deriveKey(password: String, b64Salt: String) -> Bytes? {
 
 func decrypt(key: Bytes, b64Nonce: String, b64CryptData: String) -> Bytes? {
     print("decrypting", key, b64Nonce, b64CryptData)
-    if let nonce = sodium.utils.base642bin(b64Nonce + "=="), let cryptData = sodium.utils.base642bin(b64CryptData + "==") {
+    if let nonce = sodium.utils.base642bin(b64Nonce), let cryptData = sodium.utils.base642bin(b64CryptData) {
         print("crypt have b64")
         return sodium.secretBox.open(authenticatedCipherText: cryptData, secretKey: key, nonce: nonce)
     }
