@@ -23,6 +23,7 @@
 		02284916286C796E001CEE85 /* Crypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0228490C286C796E001CEE85 /* Crypto.swift */; };
 		02284919286C7D6D001CEE85 /* Clibsodium in Frameworks */ = {isa = PBXBuildFile; productRef = 02284918286C7D6D001CEE85 /* Clibsodium */; };
 		0228491B286C7D6D001CEE85 /* Sodium in Frameworks */ = {isa = PBXBuildFile; productRef = 0228491A286C7D6D001CEE85 /* Sodium */; };
+		0228491D286D3B1F001CEE85 /* StatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0228491C286D3B1F001CEE85 /* StatsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		0228490A286C796E001CEE85 /* APIService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		0228490B286C796E001CEE85 /* PostDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostDetail.swift; sourceTree = "<group>"; };
 		0228490C286C796E001CEE85 /* Crypto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Crypto.swift; sourceTree = "<group>"; };
+		0228491C286D3B1F001CEE85 /* StatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +91,7 @@
 				021C2A09286C759B0098BE52 /* Assets.xcassets */,
 				021C2A0B286C759B0098BE52 /* shortdiary.entitlements */,
 				021C2A0C286C759B0098BE52 /* Preview Content */,
+				0228491C286D3B1F001CEE85 /* StatsView.swift */,
 			);
 			path = shortdiary;
 			sourceTree = "<group>";
@@ -181,6 +184,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0228491D286D3B1F001CEE85 /* StatsView.swift in Sources */,
 				021C2A06286C759B0098BE52 /* shortdiaryApp.swift in Sources */,
 				02284911286C796E001CEE85 /* AuthStore.swift in Sources */,
 				0228490F286C796E001CEE85 /* PostStore.swift in Sources */,

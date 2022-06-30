@@ -28,16 +28,19 @@ struct PostDetail: View {
                     .font(.title)
                 
                 if post.location_verbose != nil && post.location_verbose != "" {
-                    Text(post.location_verbose ?? "")
+                    Text(post.location_verbose!)
                 }
                 
                 HStack {
                     Text("Mood: \(post.mood)")
                         .font(.subheadline)
                     
-                    if post.tags.count > 0 {
-                        let tagsList = post.tags.joined(separator: ",")
-                        Text("Tags: \(tagsList)")
+                    ForEach(post.tags, id: \.self) { tag in
+                        Text(tag)
+                            .padding(4)
+                            .font(.subheadline)
+                            .background(Color.orange)
+                            .clipShape(Capsule())
                     }
                 }
             }

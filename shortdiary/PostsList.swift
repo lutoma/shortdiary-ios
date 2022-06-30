@@ -4,6 +4,7 @@ struct PostsList: View {
     @EnvironmentObject var postStore: PostStore
     @State private var isAddingNewPost = false
     @State private var newPost = Post()
+    @State private var searchText = ""
     
     var body: some View {
         List {
@@ -13,7 +14,7 @@ struct PostsList: View {
                         NavigationLink {
                             PostDetail(post: post)
                         } label: {
-                            Text(post.date.formatted(date: .abbreviated, time: .omitted))
+                            PostRow(post: post)
                         }
                     }
                 }, header: {
@@ -22,6 +23,7 @@ struct PostsList: View {
                         .foregroundColor(.secondary)
                         .fontWeight(.bold)
                 })
+                .headerProminence(.increased)
             }
 
         }
@@ -48,5 +50,6 @@ struct PostsList: View {
         .task {
             await postStore.load()
         }
+        .searchable(text: $searchText)
     }
 }

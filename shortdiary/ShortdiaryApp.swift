@@ -6,7 +6,7 @@ let authStore = AuthStore()
 @main
 struct ShortdiaryApp: App {
     @StateObject private var postStore = PostStore()
-    
+            
     func loadAuth() {
         AuthStore.load { result in
             switch result {
@@ -29,12 +29,24 @@ struct ShortdiaryApp: App {
                 LoginView(isLoggedIn: $isLoggedIn)
                     .onAppear(perform: loadAuth)
             } else {
-                NavigationView {
-                    PostsList()
-                    Text("Select a Post")
-                        .foregroundStyle(.secondary)
+                TabView {
+                    NavigationView {
+                        PostsList()
+                        Text("Select a Post")
+                            .foregroundStyle(.secondary)
+                    }
+                    .environmentObject(postStore)
+                    .tabItem {
+                        Label("Entries", systemImage: "list.bullet.rectangle")
+                    }
+                    .tag(1)
+                    
+                    StatsView()
+                    .tabItem {
+                        Label("Stats", systemImage: "chart.bar.xaxis")
+                    }
+                    .tag(2)
                 }
-                .environmentObject(postStore)
             }
         }
     }
