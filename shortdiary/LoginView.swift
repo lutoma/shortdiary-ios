@@ -9,10 +9,9 @@ struct LoginView: View {
                     let response = try moyaResponse.filterSuccessfulStatusCodes()
                     let data = try response.map(LoginResponse.self)
                     APIToken = data.access_token
+                    authStore.auth.user = data.user
                     authStore.auth.jwt = data.access_token
-                    
                     let user = data.user
-                    
                     print("Logged in, user data: ", user)
                     if let masterKey = cryptoUnlock(password: self.password, salt: user.ephemeral_key_salt, masterNonce: user.master_key_nonce, encryptedMaster: user.master_key) {
                         

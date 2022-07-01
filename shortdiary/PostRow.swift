@@ -10,13 +10,13 @@ struct PostRow: View {
                 .fontWeight(.bold)
                 .frame(minWidth: 35)
                 .padding([.trailing], 10)
-            
+
             VStack(alignment: .leading, spacing: 5) {
                 Text(post.date.formatted(date: .abbreviated, time: .omitted))
                     .fontWeight(.bold)
 
-                if post.location_verbose != nil && post.location_verbose != "" {
-                    Text(post.location_verbose!)
+                if let name = post.location_verbose {
+                    Text(name)
                         .font(.caption2)
                 }
                 
