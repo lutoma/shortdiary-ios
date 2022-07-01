@@ -5,7 +5,7 @@ private let calendar = Calendar.current
 private let dateFormatter = DateFormatter()
 private let decoder = JSONDecoder()
 
-struct EncryptedPost: Codable {
+struct PostEnvelope: Codable, Identifiable {
     var id: UUID
     var format_version: Int
     var date: String
@@ -13,7 +13,7 @@ struct EncryptedPost: Codable {
     var nonce: String?
 }
 
-struct EncryptedPostBody: Codable {
+struct RawPost: Codable {
     var text: String
     var location_verbose: String?
     var location_lat: String?
@@ -27,8 +27,6 @@ struct Post: Identifiable {
     var date = Date.now
     var text = ""
     var location_verbose: String?
-    var location_lat: Double?
-    var location_lon: Double?
     var location: CLLocationCoordinate2D?
     var mood = 6
     var tags: [String] = []
@@ -40,7 +38,7 @@ struct TimelinePostGroup: Identifiable {
     let posts: [Post]
 }
 
-private func loadPost(rawPost: EncryptedPost) -> Post {
+private func loadPost(rawPost: PostEnvelope) -> Post {
     var rawData: Data
 
     switch rawPost.format_version {
@@ -59,25 +57,29 @@ private func loadPost(rawPost: EncryptedPost) -> Post {
            return Post(text: "Unsupported format version")
     }
 
-    var bodyData : EncryptedPostBody
+    var bodyData : RawPost
     do {
-        bodyData = try decoder.decode(EncryptedPostBody.self, from: rawData)
+        bodyData = try decoder.decode(RawPost.self, from: rawData)
     } catch let error {
         print(error)
         return Post(text: "Decoding JSON body failed: \(error.localizedDescription)")
     }
-
-    let location_lat = Double(bodyData.location_lat ?? "")
-    let location_lon = Double(bodyData.location_lon ?? "")
 
     var location_verbose: String? = nil
     if bodyData.location_verbose != nil && bodyData.location_verbose != "" {
         location_verbose = bodyData.location_verbose
     }
 
+    var location: CLLocationCoordinate2D? = nil
+    if bodyData.location_lat != nil && bodyData.location_lat != "" && bodyData.location_lon != nil && bodyData.location_lon != "" {
+        if let lat = Double(bodyData.location_lat!), let lon = Double(bodyData.location_lon!) {
+            location = CLLocationCoordinate2D(latitude: lat, longitude: lon)
+        }
+    }
+
     let date = dateFormatter.date(from: rawPost.date)!
     return Post(date: date, text: bodyData.text, location_verbose: location_verbose,
-        location_lat: location_lat, location_lon: location_lon, mood: bodyData.mood, tags: bodyData.tags)
+                location: location, mood: bodyData.mood, tags: bodyData.tags)
 }
 
 class PostStore: ObservableObject {
@@ -101,7 +103,7 @@ class PostStore: ObservableObject {
                 case let .success(moyaResponse):
                 do {
                     let response = try moyaResponse.filterSuccessfulStatusCodes()
-                    let data = try response.map([EncryptedPost].self)
+                    let data = try response.map([PostEnvelope].self)
 
                     dateFormatter.locale = Locale(identifier: "en_US_POSIX")
                     dateFormatter.dateFormat = "yyyy-MM-dd"

@@ -22,7 +22,7 @@ struct PostDetail: View {
         ScrollView {
             ZStack {
                 VStack {
-                    //if let lat = post.location_lat, let lon = post.location_lon {
+                    //if let location = post.location {
                     if false {
                         Map(coordinateRegion: $mapRegion)
                             .frame(height: 200)
