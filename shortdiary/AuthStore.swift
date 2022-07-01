@@ -9,6 +9,10 @@ struct AuthData: Codable {
 class AuthStore: ObservableObject {
     @Published var auth: AuthData = AuthData()
     
+    var isLoggedIn: Bool {
+        return self.auth.jwt != nil
+    }
+    
     private static func fileURL() throws -> URL {
         try FileManager.default.url(for: .documentDirectory,
                                     in: .userDomainMask,
@@ -46,6 +50,15 @@ class AuthStore: ObservableObject {
                 let outfile = try fileURL()
                 try data.write(to: outfile)
             } catch {
+            }
+        }
+    }
+    
+    func logout() {
+        self.auth = AuthData()
+        AuthStore.save(authData: self.auth) { result in
+            if case .failure(let error) = result {
+                fatalError(error.localizedDescription)
             }
         }
     }

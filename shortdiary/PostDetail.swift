@@ -32,6 +32,7 @@ struct PostDetail: View {
             }
             
             Text(post.text)
+                .textSelection(.enabled)
                 .padding()
         }
         .navigationTitle(post.date.formatted(date: .abbreviated, time: .omitted))

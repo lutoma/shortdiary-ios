@@ -1,5 +1,11 @@
 import SwiftUI
 
+private func monthLabel(date: Date) -> String {
+    let monthFormatter = DateFormatter()
+    monthFormatter.setLocalizedDateFormatFromTemplate("yyyyMMMM")
+    return monthFormatter.string(from: date)
+}
+
 struct PostsList: View {
     @EnvironmentObject var postStore: PostStore
     @State private var isAddingNewPost = false
@@ -18,7 +24,7 @@ struct PostsList: View {
                         }
                     }
                 }, header: {
-                    Text(group.date.formatted(date: .abbreviated, time: .omitted))
+                    Text(monthLabel(date: group.date))
                         .font(.callout)
                         .foregroundColor(.secondary)
                         .fontWeight(.bold)
@@ -27,21 +33,18 @@ struct PostsList: View {
             }
 
         }
-        .listStyle(.plain)
-        //.navigationTitle("Entries")
+        .listStyle(.sidebar)
+        .navigationTitle("Entries")
+        .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
-                Button {
-                    print("user")
+                NavigationLink {
+                    SettingsView()
                 } label: {
                     Image(systemName: "person.circle")
                 }
             }
-                
-            ToolbarItem(placement: .principal) {
-                Text("Entries")
-            }
-                
+            
             ToolbarItem {
                 Button {
                     newPost = Post()

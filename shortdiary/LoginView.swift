@@ -19,6 +19,7 @@ struct LoginView: View {
                         authStore.auth.masterKey = masterKey
                         print("Have unlocked master key!")
                         self.isLoggedIn = true
+                        print("authStore.isLoggedin is now", authStore.isLoggedIn)
                     } else {
                         print("Decryption of master key failed")
                     }
@@ -41,39 +42,46 @@ struct LoginView: View {
     @State private var password: String = ""
     @Binding var isLoggedIn: Bool
     var body: some View {
-        VStack {
-            Text("Sign in to shortdiary")
-                .font(.largeTitle)
-                .fontWeight(.bold)
-                .padding(.bottom, 40)
-            
-            TextField(
-                "Email address",
-                text: $username
-            )
-            .onSubmit {
-                signIn()
+        ZStack {
+            Color("ShortdiaryGreen")
+                .ignoresSafeArea()
+
+            VStack {
+                Text("Sign in to shortdiary")
+                    .font(.largeTitle)
+                    .fontWeight(.bold)
+                    .padding(.bottom, 40)
+                    .foregroundColor(.white)
+                
+                TextField(
+                    "Email address",
+                    text: $username
+                )
+                .onSubmit {
+                    signIn()
+                }
+                .textInputAutocapitalization(.never)
+                .disableAutocorrection(true)
+                .keyboardType(.emailAddress)
+                
+                SecureField(
+                    "Password",
+                    text: $password
+                )
+                .onSubmit {
+                    signIn()
+                }
+                
+                Button(action: signIn) {
+                    Text("Sign In")
+                }
+                .buttonStyle(.borderedProminent)
+                .padding(.top, 20)
             }
-            .textInputAutocapitalization(.never)
-            .disableAutocorrection(true)
-            
-            SecureField(
-                "Password",
-                text: $password
-            )
-            .onSubmit {
-                signIn()
-            }
-            
-            Button(action: signIn) {
-                Text("Sign In")
-            }
-            .buttonStyle(.borderedProminent)
-            .padding(.top, 20)
+            .frame(maxWidth: 400)
+            .textFieldStyle(.roundedBorder)
+            .padding()
         }
-        .frame(maxWidth: 400)
-        .textFieldStyle(.roundedBorder)
-        .padding()
     }
 }
 

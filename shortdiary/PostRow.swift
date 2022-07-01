@@ -5,28 +5,36 @@ struct PostRow: View {
     
     var body: some View {
         HStack {
+            Text("\(Calendar.current.dateComponents([.day], from: post.date).day!)")
+                .font(.title)
+                .fontWeight(.bold)
+                .frame(minWidth: 35)
+                .padding([.trailing], 10)
+            
             VStack(alignment: .leading, spacing: 5) {
                 Text(post.date.formatted(date: .abbreviated, time: .omitted))
                     .fontWeight(.bold)
 
-                HStack {
-                    if post.location_verbose != nil && post.location_verbose != "" {
-                        Text(post.location_verbose!)
-                            .font(.caption2)
-                            .foregroundStyle(.secondary)
-                    }
-                    
-                    ForEach(post.tags, id: \.self) { tag in
-                        Text(tag)
-                            .padding(4)
-                            .font(.caption2)
-                            .foregroundStyle(.secondary)
-                            .background(Color.orange)
-                            .clipShape(Capsule())
-                    }
+                if post.location_verbose != nil && post.location_verbose != "" {
+                    Text(post.location_verbose!)
+                        .font(.caption2)
                 }
+                
+                Text(post.text.truncate(to: 80))
+                    .font(.caption2)
+                    .foregroundStyle(.secondary)
             }
         }
-        .badge(post.mood)
+    }
+}
+
+extension String {
+    func truncate(to limit: Int, ellipsis: Bool = true) -> String {
+        if count > limit {
+            let truncated = String(prefix(limit)).trimmingCharacters(in: .whitespacesAndNewlines)
+            return ellipsis ? truncated + "\u{2026}" : truncated
+        } else {
+            return self
+        }
     }
 }
