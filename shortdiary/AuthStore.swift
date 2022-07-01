@@ -1,5 +1,19 @@
 import Foundation
-import SwiftUI
+import Foundation
+
+struct User: Codable {
+    var id: UUID
+    var email: String
+    var email_verified: Bool
+    var ephemeral_key_salt: String
+    var master_key: String
+    var master_key_nonce: String
+}
+
+struct LoginResponse: Codable {
+    var access_token: String
+    var user: User
+}
 
 struct AuthData: Codable {
     var jwt: String?

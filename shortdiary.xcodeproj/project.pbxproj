@@ -16,7 +16,6 @@
 		0228490E286C796E001CEE85 /* PostRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02284904286C796E001CEE85 /* PostRow.swift */; };
 		0228490F286C796E001CEE85 /* PostStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02284905286C796E001CEE85 /* PostStore.swift */; };
 		02284911286C796E001CEE85 /* AuthStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02284907286C796E001CEE85 /* AuthStore.swift */; };
-		02284912286C796E001CEE85 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02284908286C796E001CEE85 /* Models.swift */; };
 		02284913286C796E001CEE85 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02284909286C796E001CEE85 /* LoginView.swift */; };
 		02284914286C796E001CEE85 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0228490A286C796E001CEE85 /* APIService.swift */; };
 		02284915286C796E001CEE85 /* PostDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0228490B286C796E001CEE85 /* PostDetail.swift */; };
@@ -38,7 +37,6 @@
 		02284904286C796E001CEE85 /* PostRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostRow.swift; sourceTree = "<group>"; };
 		02284905286C796E001CEE85 /* PostStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostStore.swift; sourceTree = "<group>"; };
 		02284907286C796E001CEE85 /* AuthStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthStore.swift; sourceTree = "<group>"; };
-		02284908286C796E001CEE85 /* Models.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		02284909286C796E001CEE85 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		0228490A286C796E001CEE85 /* APIService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		0228490B286C796E001CEE85 /* PostDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostDetail.swift; sourceTree = "<group>"; };
@@ -86,7 +84,6 @@
 				02284907286C796E001CEE85 /* AuthStore.swift */,
 				0228490C286C796E001CEE85 /* Crypto.swift */,
 				02284909286C796E001CEE85 /* LoginView.swift */,
-				02284908286C796E001CEE85 /* Models.swift */,
 				0228490B286C796E001CEE85 /* PostDetail.swift */,
 				02284904286C796E001CEE85 /* PostRow.swift */,
 				02284903286C796E001CEE85 /* PostsList.swift */,
@@ -201,7 +198,6 @@
 				02284916286C796E001CEE85 /* Crypto.swift in Sources */,
 				0228491F286E0A13001CEE85 /* LocationsView.swift in Sources */,
 				02284915286C796E001CEE85 /* PostDetail.swift in Sources */,
-				02284912286C796E001CEE85 /* Models.swift in Sources */,
 				02284921286E6794001CEE85 /* SettingsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

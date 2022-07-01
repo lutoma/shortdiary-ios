@@ -1,10 +1,40 @@
 import SwiftUI
+import MapKit
 
 private let calendar = Calendar.current
 private let dateFormatter = DateFormatter()
 private let decoder = JSONDecoder()
 
-struct TimelinePostGroup: Hashable, Identifiable {
+struct EncryptedPost: Codable {
+    var id: UUID
+    var format_version: Int
+    var date: String
+    var data: String
+    var nonce: String?
+}
+
+struct EncryptedPostBody: Codable {
+    var text: String
+    var location_verbose: String?
+    var location_lat: String?
+    var location_lon: String?
+    var mood: Int
+    var tags: [String]
+}
+
+struct Post: Identifiable {
+    var id = UUID()
+    var date = Date.now
+    var text = ""
+    var location_verbose: String?
+    var location_lat: Double?
+    var location_lon: Double?
+    var location: CLLocationCoordinate2D?
+    var mood = 6
+    var tags: [String] = []
+}
+
+struct TimelinePostGroup: Identifiable {
     var id: Date { date }
     let date: Date
     let posts: [Post]
