@@ -22,12 +22,15 @@ struct PostDetail: View {
         ScrollView {
             ZStack {
                 VStack {
-                    //if let location = post.location {
-                    if false {
-                        Map(coordinateRegion: $mapRegion)
+                    if let location = post.location {
+                        Map(coordinateRegion: $mapRegion, interactionModes: [])
                             .frame(height: 200)
                             .onAppear {
-                                MKMapView.appearance().mapType = .mutedStandard
+                                mapRegion = MKCoordinateRegion(
+                                    center: location,
+                                    span: MKCoordinateSpan(latitudeDelta: 0.2, longitudeDelta: 0.2)
+                                )
+                                //MKMapView.appearance().mapType = .mutedStandard
                             }
                     } else {
                         Color("ShortdiaryGreen")

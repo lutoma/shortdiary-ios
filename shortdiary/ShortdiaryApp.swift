@@ -48,8 +48,15 @@ struct ShortdiaryApp: App {
                     .tag(2)
                     
                     LocationsView()
+                    .environmentObject(postStore)
                     .tabItem {
                         Label("Locations", systemImage: "map")
+                    }
+                    .tag(3)
+
+                    SettingsView()
+                    .tabItem {
+                        Label("Settings", systemImage: "gear")
                     }
                     .tag(3)
                 }

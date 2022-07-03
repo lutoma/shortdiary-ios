@@ -22,7 +22,7 @@ struct RawPost: Codable {
     var tags: [String]
 }
 
-struct Post: Identifiable {
+struct Post: Identifiable, Equatable {
     var id = UUID()
     var date = Date.now
     var text = ""
@@ -30,6 +30,12 @@ struct Post: Identifiable {
     var location: CLLocationCoordinate2D?
     var mood = 6
     var tags: [String] = []
+}
+
+extension CLLocationCoordinate2D: Equatable {}
+
+public func ==(lhs: CLLocationCoordinate2D, rhs: CLLocationCoordinate2D) -> Bool {
+    return lhs.latitude == rhs.latitude && lhs.longitude == rhs.longitude
 }
 
 struct TimelinePostGroup: Identifiable {
@@ -95,6 +101,10 @@ class PostStore: ObservableObject {
         })
         .map({ TimelinePostGroup(date: calendar.date(from: $0.0)!, posts: $0.1) })
         .sorted(by: { $0.date > $1.date })
+    }
+
+    var postsWithLocation: [Post] {
+        self.posts.filter { $0.location != nil }
     }
 
     func load() async {
